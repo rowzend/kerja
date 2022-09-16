@@ -1,4 +1,3 @@
-dd()
 @extends('login.layout.dash')
 
 @section('content')
@@ -20,8 +19,7 @@ dd()
                                     <div class="row mb-3"><label class="col-sm-2 col-form-label" for="nip">NIP</label>
                                         <div class="col-sm-10"><input
                                                 class="form-control @error('nip') is-invalid @enderror" id="nip"
-                                                type="text" name="nip"
-                                                placeholder="199909091999091009" required autofocus>
+                                                type="number" name="nip" placeholder="199909091999091009" required autofocus value="{{ old('nip') }}">
 
                                             @error('nip')
                                                 <span class="invalid-feedback"
@@ -32,8 +30,8 @@ dd()
                                     <div class="row mb-3"><label class="col-sm-2 col-form-label" for="nama">Nama
                                             Lengkap</label>
                                         <div class="col-sm-10"><input
-                                                class="form-control @error('nama') is-invalid @enderror" id="nama"
-                                                type="text" placeholder="Nama Saya" required>
+                                                class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama"
+                                                type="text" placeholder="Nama Saya" required value="{{ old('nama') }}">
                                             @error('nama')
                                                 <span class="invalid-feedback"
                                                     role="alert"><strong>{{ $message }}</strong></span>
@@ -65,7 +63,7 @@ dd()
                                             for="jabas">Jabatan</label>
                                         <div class="col-sm-10"><input
                                                 class="form-control @error('jabas') is-invalid @enderror" id="jabas"
-                                                type="text" name="jabas" placeholder="Jabatan Sesuai SK" required>
+                                                type="text" name="jabas" placeholder="Jabatan Sesuai SK" required value="{{ old('jabas') }}">
                                             @error('jabas')
                                                 <span class="invalid-feedback"
                                                     role="alert"><strong>{{ $message }}</strong></span>
@@ -77,7 +75,7 @@ dd()
                                         <div class="col-sm-10"><input
                                                 class="form-control @error('unora') is-invalid @enderror" id="unora"
                                                 name="unora" type="text" placeholder="Organisasi Perangkat Daerah"
-                                                required>
+                                                required value="{{ old('unora') }}">
                                             @error('unora')
                                                 <span class="invalid-feedback"
                                                     role="alert"><strong>{{ $message }}</strong></span>
@@ -89,18 +87,18 @@ dd()
                                         <div class="col-sm-10"><input
                                                 class="form-control @error('instansia') is-invalid @enderror" id="instansia"
                                                 name="instansia" type="text" placeholder="Pemerintah Kabupaten/Kota Anda"
-                                                required>
+                                                required value="{{ old('instansia') }}">
                                             @error('instansia')
                                                 <span class="invalid-feedback"
                                                     role="alert"><strong>{{ $message }}</strong></span>
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="row mb-3"><label class="col-sm-2 col-form-label" for="nohp">No Hp
+                                    <div class="row mb-3"><label class="col-sm-2 col-form-label" for="nohp">No Hp/Wa
                                             Aktif</label>
                                         <div class="col-sm-10"><input
                                                 class="form-control @error('nohp') is-invalid @enderror" id="nohp"
-                                                type="text" name="nohp" placeholder="081122334455" required>
+                                                type="number" name="nohp" placeholder="081122334455" required value="{{ old('nohp') }}">
                                             @error('nohp')
                                                 <span class="invalid-feedback"
                                                     role="alert"><strong>{{ $message }}</strong></span>
@@ -114,7 +112,7 @@ dd()
                                             <div class="col-sm-10"><input
                                                     class="form-control @error('instansib') is-invalid @enderror"
                                                     id="instansib" type="text" name="instansib"
-                                                    placeholder="Pemerintah Kab/Kota Tujuan" required>
+                                                    placeholder="Pemerintah Kab/Kota Tujuan" required value="{{ old('instansib') }}">
                                                 @error('instansib')
                                                     <span class="invalid-feedback"
                                                         role="alert"><strong>{{ $message }}</strong></span>
@@ -160,7 +158,7 @@ dd()
                                           </div>
                                         </div>
                                       </div>
-                                    <button class="btn btn-primary" type="submit" name="submit" value="save">Simpan Data</button>
+                                    <button class="btn btn-primary" type="submit">Simpan Data</button>
                         </div>
                     </div>
                     </form>

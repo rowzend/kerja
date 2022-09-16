@@ -32,18 +32,18 @@ class IzinController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function store(Request $request)
     {
         $request->validate([
             'nama' => ['required', 'string', 'max:150'],
-            'nip' => ['required', 'numeric','digits:18'],
+            'nip' => ['required', 'string','digits:18'],
             'pangkat' => ['required', 'string', 'max:100'],
             'jabas' => ['required', 'string', 'max:100'],
             'unora' => ['required', 'string', 'max:150'],
             'instansia' => ['required', 'string', 'max:150'],
-            'nohp' => ['required', 'numeric','min:10','max:14'],
+            'nohp' => ['required', 'string','min:10','max:14'],
             'instansib' => ['required', 'string', 'max:150'],
             'unorb' => ['sometimes', 'string', 'max:150'],
             'jabtu' => ['sometimes', 'string', 'max:150'],
@@ -53,23 +53,28 @@ class IzinController extends Controller
             'sk' => ['required','file','mimes:pdf','max:1024']
         ]);
 
-        $izin = new Izin;
-        $izin->nama = $request->nama;
-        $izin->nip = $request->nip;
-        $izin->pangkat = $request->pangkat;
-        $izin->jabas = $request->jabas;
-        $izin->unora = $request->unora;
-        $izin->instansia = $request->instansia;
-        $izin->nohp = $request->nohp;
-        $izin->inztansib = $request->instansib;
-        $izin->unorb = $request->unorb;
-        $izin->jabtu = $request->jabtu;
-        $izin->permohonan = $request->permohonan;
-        $izin->sizin = $request->sizin;
-        $izin->skp = $request->skp;
-        $izin->sk = $request->sk;
-        $izin->save();
-        return redirect()->route('izin.index');
+        $request['user_id'] = auth()->user()->id;
+
+
+        // $izin = new Izin;
+        // $izin->user_id = auth()->user()->id;
+        // $izin->nama = $request->nama;
+        // $izin->nip = $request->nip;
+        // $izin->pangkat = $request->pangkat;
+        // $izin->jabas = $request->jabas;
+        // $izin->unora = $request->unora;
+        // $izin->instansia = $request->instansia;
+        // $izin->nohp = $request->nohp;
+        // $izin->inztansib = $request->instansib;
+        // $izin->unorb = $request->unorb;
+        // $izin->jabtu = $request->jabtu;
+        // $izin->permohonan = $request->permohonan;
+        // $izin->sizin = $request->sizin;
+        // $izin->skp = $request->skp;
+        // $izin->sk = $request->sk;
+        // $izin->save();
+        Izin::create($request);
+        return redirect()->route('izin.izin.index');
     }
 
     /**

@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('izins', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('nama');
-            $table->string('nip')->unique();
+            $table->string('nip');
             $table->string('pangkat');
             $table->string('jabas');
             $table->string('unora');
@@ -26,10 +26,6 @@ return new class extends Migration
             $table->string('instansib');
             $table->string('unorb');
             $table->string('jabtu');
-            $table->string('permohonan');
-            $table->string('sizin');
-            $table->string('skp');
-            $table->string('sk');
             $table->timestamps();
         });
     }

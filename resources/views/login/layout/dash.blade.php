@@ -25,6 +25,9 @@
   <!-- App CSS -->
   <link rel="stylesheet" href="{{asset('log/css/app-light.css')}}" id="lightTheme">
   <link rel="stylesheet" href="{{asset('log/css/app-dark.css')}}" id="darkTheme" disabled>
+  {{-- editor --}}
+  <link rel="stylesheet" type="text/css" href="{{ asset('log/css/trix.css') }}">
+  <script type="text/javascript" src="{{ asset('log/js/trix.js') }}"></script>
 </head>
 
 <body class="vertical  light  ">

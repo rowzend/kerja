@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InmutasiController;
 use App\Http\Controllers\IzinController;
 use App\Http\Controllers\UserController;
 
@@ -67,4 +68,5 @@ Route::middleware(['auth', 'user-access:user,admin,master'])->group(function () 
 
 Route::middleware(['auth', 'user-access:admin,master'])->group(function () {
   Route::resource('manajemen/fulluser', controller:UserController::class);
+  Route::resource('info/inmutasi', controller:InmutasiController::class);
 });

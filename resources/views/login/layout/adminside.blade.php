@@ -37,11 +37,11 @@
         <li class="nav-item dropdown">
             <a href="#ui-elements" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-box fe-16"></i>
-                <span class="ml-3 item-text">UI elements</span>
+                <span class="ml-3 item-text">Home Info</span>
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
                 <li class="nav-item">
-                    <a class="nav-link pl-3" href="./ui-color.html"><span class="ml-1 item-text">Colors</span>
+                    <a class="nav-link pl-3" href="{{ route('inmutasi.index') }}"><span class="ml-1 item-text">Pindah Instansi</span>
                     </a>
                 </li>
                 <li class="nav-item">
