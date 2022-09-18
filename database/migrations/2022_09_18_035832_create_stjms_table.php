@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('izins', function (Blueprint $table) {
+        Schema::create('stjms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('nama');
@@ -23,13 +23,9 @@ return new class extends Migration
             $table->string('unora');
             $table->string('instansia');
             $table->string('nohp');
-            $table->string('instansib');
-            $table->string('unorb');
-            $table->string('jabtu');
-            $table->string('permohonan');
-            $table->string('sizin');
-            $table->string('skp');
-            $table->string('sk');
+            // $table->string('instansib');
+            // $table->string('unorb');
+            // $table->string('jabtu');
             $table->timestamps();
         });
     }
@@ -41,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('izins');
+        Schema::dropIfExists('stjms');
     }
 };

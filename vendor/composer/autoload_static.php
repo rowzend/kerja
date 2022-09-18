@@ -531,6 +531,7 @@ class ComposerStaticInit1f9aac9be425cc93b061ef55ee090969
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\inmutasi' => __DIR__ . '/../..' . '/app/Models/inmutasi.php',
         'App\\Models\\izin' => __DIR__ . '/../..' . '/app/Models/izin.php',
+        'App\\Models\\stjm' => __DIR__ . '/../..' . '/app/Models/stjm.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

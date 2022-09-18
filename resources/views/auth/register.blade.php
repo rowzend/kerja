@@ -51,20 +51,20 @@
         </div>
         <div class="form-input">
             <label for="type">Jenis Layanan</label>
-            <!-- <div class="default-select" name="type" id="type" required>
-                <select>
+            <div class="default-select">
+                <select class="form-control" id="type" name="type" required> 
                     <option selected disabled value="">Pilih Layanan</option>
                     <option value="0">Izin Seleksi Pindah</option>
                     <option value="1">Permintaan Persetujuan Mutasi</option>
                     <option value="2">Pemberkasan Bahan Mutasi</option>
                 </select>
-            </div> -->
-            <select class="form-control" id="type" name="type" required>
+            </div>
+            <!-- <select class="form-control" id="type" name="type" required>
                 <option selected disabled value="">Pilih Salah Satu...</option>
                 <option value="0">Izin Seleksi Pindah</option>
                 <option value="1">Permintaan Persetujuan Mutasi</option>
                 <option value="2">Pemberkasan Bahan Mutasi</option>
-            </select>
+            </select> -->
             <div class="invalid-feedback"> Jangan Lupa Pilih Jenis Pelayanan?!
             </div>
         </div>

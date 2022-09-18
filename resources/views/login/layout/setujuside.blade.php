@@ -16,7 +16,7 @@
             </a>
             <ul class="collapse list-unstyled pl-4 w-100" id="setuju">
                 <li class="nav-item active">
-                    <a class="nav-link pl-3" href="./berkas"><span class="ml-1 item-text">Kelengkapan</span></a>
+                    <a class="nav-link pl-3" href="{{route('persetujuan.index')}}"><span class="ml-1 item-text">Kelengkapan</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link pl-3" href="./inberkas"><span class="ml-1 item-text">Pemberkasan</span></a>
