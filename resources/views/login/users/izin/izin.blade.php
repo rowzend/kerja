@@ -16,7 +16,7 @@
                     <div class="card shadow">
                         <div class="card-header">
                             <strong class="card-title">Recent Data</strong>
-                            <a class="float-right small text-muted" href="#!">View all</a>
+                            <a class="float-right small text-muted" href="{{ route('izin.create') }}">Insert</a>
                         </div>
                         <div class="card-body my-n2">
                             <table class="table table-striped table-hover table-borderless">
@@ -47,7 +47,8 @@
                                         @endif
                                     @endforeach
                                         <td>
-                                        <a class="btn btn-outline-primary rounded-pill me-1 mb-1"   href="{{ route('izin.create') }}">lengkapi</a>
+                                        <a class="btn btn-outline-primary rounded-pill me-1 mb-1"   href="#">edit</a>
+                                        @csrf
                                             </div>
                                         </td>
                                     </tr>

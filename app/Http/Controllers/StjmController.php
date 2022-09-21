@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\stjm;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class StjmController extends Controller
 {
@@ -14,8 +15,8 @@ class StjmController extends Controller
      */
     public function index()
     {
-       $stjm = Stjm::all();
-       return view('login.users.setuju.setuju', compact('stjm'));
+        $stjm = Stjm::whereUserId(Auth::id())->get();
+        return view('login.users.setuju.setuju', compact('stjm'));
     }
 
     /**
@@ -25,7 +26,7 @@ class StjmController extends Controller
      */
     public function create()
     {
-        //
+        return view('login.users.setuju.setujuce');
     }
 
     /**
@@ -36,7 +37,47 @@ class StjmController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            // 'user_id' => 'required',
+            'nama' => 'required|max:99',
+            'nip' => 'required|digits:18',
+            'pangkat' => 'required|max:25',
+            'jabas' => 'required|max:69',
+            'unora' => 'required|max:50',
+            'instansia' => 'required|max:50',
+            'nohp' => 'required|min:11|max:13',
+            'instansib' => 'required|max:50',
+            'unorb' => 'sometimes|max:50',
+            'jabtu' => 'sometimes|max:69'
+        ]);
+
+        $request->user()->setuju()->create([
+            'nama' => $request->nama,
+            'nip' => $request->nip,
+            'pangkat' => $request->pangkat,
+            'jabas' => $request->jabas,
+            'unora' => $request->unora,
+            'instansia' => $request->instansia,
+            'nohp' => $request->nohp,
+            'instansib' => $request->instansib,
+            'unorb' => $request->unorb,
+            'jabtu' => $request->jabtu
+        ]);
+
+        // $data['user_id'] = auth()->user()->id;
+
+        // Stjm::create( $data
+        //     [
+        //         'nama' => $request->nama,
+        //         'nip' => $request->nip,
+        //         'pangkat' => $request->pangkat,
+        //         'jabas' => $request->jabas,
+        //         'unora' => $request->unora,
+        //         'instansia' => $request->instansia,
+        //         'nohp' => $request->nohp
+        //     ]
+        // );
+        return redirect()->route('persetujuan.index');
     }
 
     /**

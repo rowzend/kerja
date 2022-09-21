@@ -23,9 +23,9 @@ return new class extends Migration
             $table->string('unora');
             $table->string('instansia');
             $table->string('nohp');
-            // $table->string('instansib');
-            // $table->string('unorb');
-            // $table->string('jabtu');
+            $table->string('instansib');
+            $table->string('unorb');
+            $table->string('jabtu');
             $table->timestamps();
         });
     }

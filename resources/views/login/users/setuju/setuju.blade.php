@@ -16,7 +16,7 @@
                     <div class="card shadow">
                         <div class="card-header">
                             <strong class="card-title">Recent Data</strong>
-                            <a class="float-right small text-muted" href="#!">View all</a>
+                            <a class="float-right small text-muted" href="{{ route('persetujuan.create') }}">insert</a>
                         </div>
                         <div class="card-body my-n2">
                             <table class="table table-striped table-hover table-borderless">
@@ -35,19 +35,17 @@
                                 <tbody>
 
                                     <tr>
-                                        <td>{{auth()->user()->id}}</td>
-                                        @foreach ($izin as $items)
-                                    @if ($items->user->id == Auth::user()->id)
-                                        <th scope="col">{{ $items->nip }}<br> {{auth()->user()->name}}</th>
+                                    @foreach ($stjm as $items)
+                                        <td>{{ $items->id }}</td>
+                                        <th scope="col">{{ $items->nip }}<br> {{$items->nama}}</th>
                                         <td>{{ $items->pangkat }}</td>
                                         <td>{{ $items->jabas }}</td>
                                         <td>{{ $items->instansia }}</td>
                                         <td>{{ $items->instansib }}</td>
                                         <td>lengkap/kosong</td>
-                                        @endif
                                     @endforeach
                                         <td>
-                                        <a class="btn btn-outline-primary rounded-pill me-1 mb-1"   href="{{ route('izin.create') }}">lengkapi</a>
+                                        <a class="btn btn-outline-primary rounded-pill me-1 mb-1"   href="#">lengkapi</a>
                                             </div>
                                         </td>
                                     </tr>

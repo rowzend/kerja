@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\izin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IzinController extends Controller
 {
@@ -14,7 +15,7 @@ class IzinController extends Controller
      */
     public function index()
     {
-        $izin = Izin::all();
+        $izin = Izin::whereUserId(Auth::id())->get();
         return view('login.users.izin.izin', compact('izin'));
     }
 
@@ -37,44 +38,39 @@ class IzinController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => ['required', 'string', 'max:150'],
-            'nip' => ['required', 'string','digits:18'],
-            'pangkat' => ['required', 'string', 'max:100'],
-            'jabas' => ['required', 'string', 'max:100'],
-            'unora' => ['required', 'string', 'max:150'],
-            'instansia' => ['required', 'string', 'max:150'],
-            'nohp' => ['required', 'string','min:10','max:14'],
-            'instansib' => ['required', 'string', 'max:150'],
-            'unorb' => ['sometimes', 'string', 'max:150'],
-            'jabtu' => ['sometimes', 'string', 'max:150'],
-            'permohonan' => ['required','file','mimes:pdf','max:1024'],
-            'sizin' => ['required','file','mimes:pdf','max:1024'],
-            'skp' => ['required','file','mimes:pdf','max:5120'],
-            'sk' => ['required','file','mimes:pdf','max:1024']
+            'nama' => 'required|max:99',
+            'nip' => 'required|digits:18',
+            'pangkat' => 'required|max:25',
+            'jabas' => 'required|max:69',
+            'unora' => 'required|max:50',
+            'instansia' => 'required|max:50',
+            'nohp' => 'required|min:11|max:13',
+            'instansib' => 'required|max:50',
+            'unorb' => 'sometimes|max:50',
+            'jabtu' => 'sometimes|max:69',
+            'file1' => 'required|file|mimes:pdf|max:5220',
+            'file2' => 'required|file|mimes:pdf|max:2048'
         ]);
 
-        $request['user_id'] = auth()->user()->id;
-
-
-        // $izin = new Izin;
-        // $izin->user_id = auth()->user()->id;
-        // $izin->nama = $request->nama;
-        // $izin->nip = $request->nip;
-        // $izin->pangkat = $request->pangkat;
-        // $izin->jabas = $request->jabas;
-        // $izin->unora = $request->unora;
-        // $izin->instansia = $request->instansia;
-        // $izin->nohp = $request->nohp;
-        // $izin->inztansib = $request->instansib;
-        // $izin->unorb = $request->unorb;
-        // $izin->jabtu = $request->jabtu;
-        // $izin->permohonan = $request->permohonan;
-        // $izin->sizin = $request->sizin;
-        // $izin->skp = $request->skp;
-        // $izin->sk = $request->sk;
+        $path =$request->file('file1')->store('public/file');
+        $path =$request->file('file2')->store('public/file');
+        $request->user()->izin()->create([
+            'nama' => $request->nama,
+            'nip' => $request->nip,
+            'pangkat' => $request->pangkat,
+            'jabas' => $request->jabas,
+            'unora' => $request->unora,
+            'instansia' => $request->instansia,
+            'nohp' => $request->nohp,
+            'instansib' => $request->instansib,
+            'unorb' => $request->unorb,
+            'jabtu' => $request->jabtu,
+            'file1' => $path,
+            'file2' => $path
+        ]);
         // $izin->save();
-        Izin::create($request);
-        return redirect()->route('izin.izin.index');
+        // Izin::create($request);
+        return redirect()->route('izin.index');
     }
 
     /**
@@ -85,7 +81,7 @@ class IzinController extends Controller
      */
     public function show(izin $izin)
     {
-        return view('login.users.izin.berizin');
+        return view('login.users.izin.berizin', compact('izin'));
     }
 
     /**
@@ -96,7 +92,7 @@ class IzinController extends Controller
      */
     public function edit(izin $izin)
     {
-        //
+        return view('login.users.izin.eizin', compact('izin'));
     }
 
     /**
@@ -108,7 +104,49 @@ class IzinController extends Controller
      */
     public function update(Request $request, izin $izin)
     {
-        //
+        $request->validate([
+            'nama' => 'required|max:99',
+            'nip' => 'required|digits:18',
+            'pangkat' => 'required|max:25',
+            'jabas' => 'required|max:69',
+            'unora' => 'required|max:50',
+            'instansia' => 'required|max:50',
+            'nohp' => 'required|min:11|max:13',
+            'instansib' => 'required|max:50',
+            'unorb' => 'sometimes|max:50',
+            'jabtu' => 'sometimes|max:69',
+        ]);
+
+        $izin = Izin::find($izin);
+        if($request->hasFile('file1')){
+            $request->validate([
+                'file1' => 'required|file|mimes:pdf|max:5220',
+            ]);
+            $path = $request->file('file1')->store('public/file');
+            $izin->file = $path;
+        }
+        if($request->hasFile('file2')){
+            $request->validate([
+                'file2' => 'required|file|mimes:pdf|max:2048',
+            ]);
+            $path = $request->file('file2')->store('public/file');
+            $izin->file = $path;
+        }
+        
+        $$izin->user()->izin()->update([
+            'nama' => $request->nama,
+            'nip' => $request->nip,
+            'pangkat' => $request->pangkat,
+            'jabas' => $request->jabas,
+            'unora' => $request->unora,
+            'instansia' => $request->instansia,
+            'nohp' => $request->nohp,
+            'instansib' => $request->instansib,
+            'unorb' => $request->unorb,
+            'jabtu' => $request->jabtu,
+            'file1' => $path,
+            'file2' => $path
+        ]);
     }
 
     /**

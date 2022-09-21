@@ -26,10 +26,8 @@ return new class extends Migration
             $table->string('instansib');
             $table->string('unorb');
             $table->string('jabtu');
-            $table->string('permohonan');
-            $table->string('sizin');
-            $table->string('skp');
-            $table->string('sk');
+            $table->string('file1');
+            $table->string('file2');
             $table->timestamps();
         });
     }
