@@ -39,8 +39,10 @@
                         <label for="type">Jenis User</label>
                             <select class="form-control" id="type" name="type" required>
                               <option selected disabled value="">Choose...</option>
-                              <option value="0">User</option>
-                              <option value="1">admin</option>
+                              <option value="0">User Izin</option>
+                              <option value="1">User Persetujuan</option>
+                              <option value="2">User Mutasi</option>
+                              <option value="3">admin</option>
                             </select>
                             <div class="invalid-feedback"> Pilih Jenis Usernya!?. </div>
                     </div>

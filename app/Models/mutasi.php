@@ -10,7 +10,7 @@ class mutasi extends Model
     use HasFactory;
     
     protected $fillable = [
-        'user_id','nama','nip','pangkat','jabas','unora','instansia','nohp','instansib','unorb','jabtu'
+        'user_id','nama','nip','pangkat','eska'
     ];
 
     public function user(){

@@ -19,13 +19,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('nip');
             $table->string('pangkat');
-            $table->string('jabas');
-            $table->string('unora');
-            $table->string('instansia');
-            $table->string('nohp');
-            $table->string('instansib');
-            $table->string('unorb');
-            $table->string('jabtu');
+            $table->string('eska');
             $table->timestamps();
         });
     }

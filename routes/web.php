@@ -72,15 +72,15 @@ Route::middleware(['auth', 'user-access:master'])->group(function () {
 
 // side menu
 Route::middleware(['auth', 'user-access:izin,admin,master'])->group(function () {
-    Route::resource('seleksi/izin', controller: IzinController::class);
+    Route::resource('seleksi/izin', IzinController::class);
 });
 
 Route::middleware(['auth', 'user-access:setuju,admin,master'])->group(function () {
-    Route::resource('mutasi/persetujuan', controller: StjmController::class);
+    Route::resource('mutasi/persetujuan', StjmController::class);
 });
 
 Route::middleware(['auth', 'user-access:mutasi,admin,master'])->group(function () {
-    Route::resource('mutasi/berkas', controller:MutasiController::class);
+    Route::resource('mutasi/berkas', MutasiController::class);
 });
 
 // Route::get('/berkas',function() {return view('login.users.berkas');})->middleware(('auth'));
@@ -88,6 +88,6 @@ Route::middleware(['auth', 'user-access:mutasi,admin,master'])->group(function (
 // Route::get('/koleksi',function() {return view('login.users.koleksi');})->middleware(('auth'));
 
 Route::middleware(['auth', 'user-access:admin,master'])->group(function () {
-    Route::resource('manajemen/fulluser', controller: UserController::class);
-    Route::resource('info/inmutasi', controller: InmutasiController::class);
+    Route::resource('manajemen/fulluser', UserController::class);
+    Route::resource('info/inmutasi', InmutasiController::class);
 });

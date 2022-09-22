@@ -60,4 +60,8 @@ class User extends Authenticatable
     public function izin(){
         return $this->hasMany(izin::class);
     }
+
+    public function berkas(){
+        return $this->hasMany(mutasi::class);
+    }
 }
